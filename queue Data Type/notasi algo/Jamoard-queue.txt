@@ -1,0 +1,56 @@
+Type TQueue = <wadah:array[1..10] of character,
+                head:integer,
+				tail:integer >
+
+
+Procedure Enqueue(input/output Q:TQueue, input e:character)
+{I.S: Q,e terdefinisi, Q mungkin kosong }
+{F.S: Q tetap, atau infoTail(Q)=e }
+kamus Lokal
+	i : interger {iterartor}
+
+Algortima
+	if Q.tail = 0 then
+		Q.head <- Q.head + 1
+		Q.tail <- Q.tail + 1
+		Q.wadah[Q.head] <- e
+	else
+		Q.tail <- Q.tail + 1
+		Q.wadah[Q.tail] <- e
+		
+{ cara kedua }
+Kamus Lokal
+
+Algortima
+	if NOT isFullQueue(Q) then
+		Q.tail <- Q.tail + 1
+		Q.wadah[Q.tail] <- e
+		if Q.tail = 1 then
+			Q.head <-- 1
+		
+
+
+ProcedureDequeue(input/output Q:TQueue, output e:character)
+{I.S: Q terdefinisi, mungkin kosong }
+{F.S: Q tetap, atau e berisi infoHead(Q) lama }
+{Proses menghapus elemen e dari head Q bila belum kosong}
+{lalu geser maju 1 langkah semua elemen di belakang head}		
+Kamus Lokal
+	i : integer { iterartor }
+
+Algortima
+	if Q.tail =/= 0 AND Q.head =/= 0 then
+		e <- Q.wadah[Q.head]
+		i transversal[Q.head..Q.tail-1]
+			Q.wadah[i] <- Q.wadah[i+1]
+	
+		Q.wadah[Q.tail] <- " "
+		Q.tail <- Q.tail - 1
+		if Q.tail = 0 then
+			Q.head <- 0
+		
+	else
+		e <- " "
+	
+	
+	

@@ -1,0 +1,274 @@
+												##########################################
+												##########################################
+												#####								######
+												#####	By : Benhard Simanullang	######
+												#####								######
+												##########################################
+												##########################################
+
+ANTARMUKA
+type Tabel = <wadah: array[1..10] of integer, size: integer >
+
+=============================================================Nomer 1=============================================================
+
+REALISASI
+procedure populateTabelMark( input/output T: Tabel)
+{I.S: T terdefinisi }
+{F.S: T terisi sejumlah elemen }
+{proses: mengisi elemen dengan masukan keyboard berulang hingga masukan bernilai <=0}
+KAMUS LOKAL
+	i : integer { iterator }
+	x : integer { masukan dari keyboard } 
+	state: integer { posisi apakah masih boleh loop atau tidak kalo 1 berarti boleh kalo 0 stop }
+ALGORTIMA
+	state <- 0
+	i transversal [1..10]
+		input(x)
+		if x > 0 AND state = 0
+			T.wadah[i] <- x
+			state <- 1
+			
+			
+=============================================================Nomer 2=============================================================
+
+REALISASI			
+function getNewTable() --> Tabel
+	{mengembalikan tabel dengan size=0, setiap elemen wadah=-999}
+
+KAMUS LOKAL
+	i : integer { iterator }
+ALGORTIMA
+	T.size <- 0
+	i transversal [1..10]
+		T.wadah[i] <- -999
+	-> T
+	
+=============================================================Nomer 3=============================================================
+REALISASI
+procedure printTable ( input T:Tabel )
+	{I.S.: T terdefinisi}
+	{F.S.: semua elemen T telah tampil ke layar}
+	{Proses: menampilkan semua elemen T ke layar}
+KAMUS LOKAL
+	i : integer { iterator }
+ALGORTIMA
+	i transversal [1..10]
+		output(T.wadah[i]) { menampilkan nilai pada layar }
+		
+{ maksut dari proses ambigu } 
+procedure viewTable ( input T:Tabel )
+	{I.S.: T terdefinisi}
+	{F.S.: beberapa elemen T telah tamil ke layar}
+	{Proses: menampilkan elemen T yang terisi ke layar}
+KAMUS LOKAL
+	i : integer { iterator }
+ALGORTIMA
+	i transversal [1..10]
+		output(T.wadah[i]) { menampilkan nilai pada layar }
+		
+
+=============================================================Nomer 4=============================================================
+REALISASI
+function IsEmpty (T : Tabint) → boolean
+{ Mengirimkan true jika tabel kosong, mengirimkan false jika tidak } 
+KAMUS LOKAL
+
+ALGORTIMA
+	-> T.size = 0
+	
+{ ambigu dengan apa yang di maksut dengan belum terisi }
+function countEmpty(T: Tabel) --> integer
+    {I.S. : T terdefinisi}
+    {F.S. : mengembalikan banyak elemen T yang belum terisi}
+    {proses : menghitung banyaknya elemen T yang belum terisi}
+KAMUS LOKAL
+	i : integer { iterator }
+	sum : integer { banyak elemen yang belum terisi }
+ALGORTIMA
+	sum <- 0
+	i transversal [1..10]
+		if T.wadah[i] = 0 
+			sum <- sum + 1
+			
+	-> sum
+	
+=============================================================Nomer 5=============================================================
+REALISASI
+{ ambigu dengan arti kata penuh }
+function isFullTable( T: Tabel) -> boolean
+	{mengembalikan True jika T penuh }
+KAMUS LOKAL
+	i : integer { iterator }
+	state : boolean
+ALGORTIMA
+	state <- false
+	i transversal [1..10]
+		if T.wadah[i] != null AND T.size !=0
+			state <- true
+		else
+			state <- false
+	-> state
+			
+		
+		
+function getSize( T: Tabel) -> integer
+	{mengembalikan banyak elemen pengisi T }
+KAMUS LOKAL
+	i : integer { iterator }
+	sum : integer { banyak elemen yang terisi }
+ALGORTIMA
+	sum <- 0
+	i transversal [1..10]
+		if T.wadah[i] != 0 
+			sum <- sum + 1
+			
+	-> sum
+		
+=============================================================Nomer 6=============================================================
+procedure searchX1 ( input T:Tabel, input X: integer, output Pos: integer )
+	{I.S.: T terdefinisi, X terdefinisi }
+	{F.S.: Pos berisi posisi pertama ketemu X di T.wadah, atau -999 jika tidak ketemu }
+	{Proses: mencari elemen bernilai X dalam T.wadah}
+KAMUS LOKAL
+	i : integer { iterator }
+	val : integer { posisi X }
+	found : integer { apakah sudah ketemu }
+ALGORTIMA
+	found <- 0
+	val <- -999
+	i transversal [1..10]
+		if found = 0 AND T.wadah[i] = X
+			Val <- i
+			found <- 1
+	
+	Pos <- Val
+
+=============================================================Nomer 7=============================================================
+REALISASI
+procedure countX ( input T:Tabel, input X: integer, output Byk: integer )
+	{I.S.: T terdefinisi, X terdefinisi }
+	{F.S.: Byk berisi banyaknya X di T.wadah, atau 0 jika tidak ketemu }
+	{Proses: menghitung elemen bernilai X dalam T.wadah}
+Kamus Lokal
+      i : integer { iterator }
+      sum : integer{ jumlah dari input X pada tabel }
+Algoritma 
+      sum <- 0 { inisial nilai sum }
+      i transversal 1..10
+            if T.wadah[ i ] = X 
+                 sum <- sum + 1 { setiap kali menemukan nilai X pada wadah nilai sum bertambah 1 }
+
+      Byk <- sum { memasukkan hasil sum ke varibale Byk }
+     
+=============================================================Nomer 8=============================================================            
+REALISASI
+function getMaxElm ( T: Tabel) -> integer
+	{mengembalikan nilai elemen terbesar }
+
+KAMUS LOKAL
+	i : integer { iterator }
+	max : integer { nilai terbesar }
+ALGORTIMA
+	max <- T.wadah[1]
+	i transversal [1..10]
+		if T.wadah[i] > T.wadah[i+1]
+			max <- T.wadah[i]
+	-> max
+	
+function getMinElm ( T: Tabel) -> integer
+	{mengembalikan nilai elemen terkecil, tapi bukan -999 }
+KAMUS LOKAL
+	i : integer { iterator }
+	min : integer { nilai terkecil }
+ALGORTIMA
+	min <- T.wadah[1]
+	i transversal [1..10]
+		if T.wadah[i] < T.wadah[i+1]
+			min <- T.wadah[i]
+	-> min
+	
+=============================================================Nomer 9=============================================================      
+REALISASI
+procedure addX ( input/output T:Tabel, input X: integer )
+	{I.S.: T terdefinisi, X terdefinisi }
+	{F.S.: isi T.wadah bertambah 1 elemen jika belum penuh}
+	{Proses: mengisi elemen T.wadah dengan nilai X}
+KAMUS LOKAL
+	i : integer { iterator }
+	done : integer { apakah sudah ditambah }
+ALGORTIMA
+	if(isFullTable(T))
+		i transversal [1..10]
+			if done == 0 AND T.wadah[i] == null
+				T.wadah[i] <- X
+				done <- 1
+
+=============================================================Nomer 10=============================================================	
+REALISASI
+procedure delX ( input/output T:Tabel, input X: integer )
+	{I.S.: T terdefinisi}
+	{F.S.: isi T.wadah berkurang 1 elemen jika belum kosong}
+	{Proses: menghapus 1 elemen bernilai X, geser semua elemen sisa}
+KAMUS LOKAL
+	i : integer { iterator }
+	find : integer { 1 bila X sudah ketemu 0 bila belum}
+ALGORTIMA
+	found <- 0 { belum ketemu X }
+	i transversal [1..10]
+		if T.wadah[i] = X OR found = 1
+			T.wadah[i] <- T.wadah[i+1] { hanya terdapat 1 element X dalam tabel dan menggeser nilai nya bila sudah ketemu }
+			found <- 1 { sudah ketemu }
+
+
+	
+=============================================================Nomer 11=============================================================
+REALISASI
+procedure delAllX ( input/output T:Tabel, input X: integer )
+	{I.S.: T terdefinisi}
+	{F.S.: isi T.wadah berkurang semua elemen bernilai X jika belum kosong}
+	{Proses: menghapus semua elemen bernilai X, geser elemen sisa}
+KAMUS LOKAL
+	i : integer { iterator }
+ALGORTIMA
+	i transversal [1..10]
+		if T.wadah[i] = X
+			delX(T,X)
+		
+=============================================================Nomer 12=============================================================  
+REALISASI
+procedure updateX ( input/output T:Tabel, input X: integer, input Y: integer )
+	{I.S.: T terdefinisi, Y >= 0}
+	{F.S.: isi T.wadah bernilai X diganti nilainya dengan Y}
+	{Proses: mengganti elemen pertama bernilai X dengan nilai Y }	
+KAMUSL LOKAL
+	i : integer { iterator }
+	state : integer { 1 bila sudah ada nilai X yang diganti, 0 bila belum }
+ALGORTIMA
+	state <- 0 { belum diganti }
+	i transversal [1..10]
+		if T.wadah[i] = X AND state = 0
+			T.wadah[i] <- Y
+			state <- 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

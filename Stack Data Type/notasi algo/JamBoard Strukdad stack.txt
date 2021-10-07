@@ -1,0 +1,112 @@
+												##########################################
+												##########################################
+												#####								######
+												#####	By : Benhard Simanullang	######
+												#####								######
+												##########################################
+												##########################################
+									
+ANTARMUKA									
+Type Tstack = <wadah:array[1..10] of character, top:integer>
+
+=============================================================Nomer 1=============================================================
+REALISASI
+ProcedureCreateStack(output S:Tstack)
+{I.S: - ; F.S: S terdefinisi }
+{Proses mengisi elemen wadah dengan ‘ ’, top 0}
+KAMUS LOKAL
+	i: integer {iterator}
+
+ALGORITMA
+	i transversal[1..10]
+		S.wadah[i] <- ' '
+	S.top <- 0
+
+=============================================================Nomer 2=============================================================	
+REALISASI
+Function Infotop(S:Tstack) -> character
+{mengembalikan nilai elemen puncak}
+KAMUS LOKAL
+
+ALGORITMA
+	if S.top =/= 0
+		-> S.wadah[S.top]
+	else
+		-> 0
+	
+	
+=============================================================Nomer 3=============================================================	
+REALISASI
+Function Top(S:Tstack) -> integer
+{mengembalikan posisi puncak
+KAMUS LOKAL
+
+ALGORITMA
+	->S.top
+
+=============================================================Nomer 4=============================================================
+REALISASI
+Function isEmptyStack(S:Tstack) -> boolean
+{mengembalikan true bila S kosong}
+KAMUS LOKAL
+
+ALGORITMA
+	-> S.top = 0
+
+=============================================================Nomer 5=============================================================
+REALISASI
+Function isFullStack(S:Tstack) -> boolean
+{mengembalikan true bila S penuh}
+KAMUS LOKAL
+
+ALGORITMA
+	-> S.top = 10
+
+=============================================================Nomer 6=============================================================
+REALISASI
+Procedure Push(input/output S:Tstack, input e:character)
+{I.S: S,e terdefinisi, S mungkin kosong }
+{F.S: S tetap, atau infotop(S)=e }
+{Proses mengisi elemen e ke puncak S, bila belum penuh} 
+KAMUS LOKAL
+
+ALGORITMA
+	S.top <- S.top + 1
+	S.wadah[S.top] <- e;
+	
+=============================================================Nomer 7=============================================================	
+REALISASI
+Procedure Pop(input/output S:Tstack, output e:character)
+{I.S: S terdefinisi, mungkin kosong }
+{F.S: S tetap, atau e berisi infotop(S) lama }
+{Proses menghapus elemen e dari puncak S, bila belum kosong}
+KAMUS LOKAL
+
+ALGORITMA
+	if S.top =/= 0
+		e <- S.wadah[S.top] { mengeluarkan nilai teratas ke variable e }
+		S.wadah[S.top] <- ' ' { mengosongkan wadah top }
+		S.top <- S.top - 1 { membuat posisi top ke posisi sebelum nya}
+		
+	else { S.top = 0 }
+        e <- ' ' { mengembalikan char kosong bila S.top = 0 }
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

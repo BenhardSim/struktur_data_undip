@@ -1,0 +1,33 @@
+Procedure Enqueue(input/output Q:TQueue2, input e:character)
+{I.S: Q,e terdefinisi, Q mungkin kosong }
+{F.S: Q tetap, atau infoTail(Q)=e }
+{Proses menambah elemen e ke ekor Q bila belum penuh}
+{bila tail di kapasitas, head direset 1 diikuti semua elemen lain}
+
+Kamus lokal
+	i: integer                {iterator}
+    newTail: integer   {counter tail baru}
+Algoritma
+
+if not(isTailStop(Q)) then
+	Q.tail <- Q.tail + 1
+	Q.wadah[Q.tail] <- e
+	if (Q.tail = 1) then
+		Q.head <- 1
+else
+	if not(isFullQueue(Q)) then
+                newTail <- 0
+		i traversal [Q.head..Q.tail]
+			Q.wadah[i-Q.head+1] <- Q.wadah[Q.head]
+		        newTail <- newTail +1
+                Q.head <- 1
+		Q.tail <- newTail +1 
+		Q.wadah[Q.tail] <- e
+	
+	
+	
+kamus lokal
+	i : integer { iterartor }
+
+Algortima
+	
